@@ -1,0 +1,10 @@
+;Hacer una función que devuelva una lista con los datos que el usuario digite por teclado. La entrada de datos termina cuando el usuario entre el número -1.
+(define(funcion lista datos)
+  (if(equal? datos -1)
+  (display lista)
+  (funcion(append lista (list datos)) (read))
+  )
+  )
+(display"Ingrese una lista de datos,la lista termina cuando ingrese -1")
+(newline)
+(funcion (list) (read))
