@@ -1,0 +1,37 @@
+;29 escribir un programa que imprima una tabla con los números que hay entre dos números leídos.
+;Frente a cada número debe aparecer su cuadrado, su cubo, su raíz cuadrada y su raíz cúbica.
+(define (todas n m)
+  (if(> m n)
+     (begin
+        (display m)        
+        (display "\t")
+        (display (expt m 2))
+        (display "\t")
+        (display (expt m 3))
+        (display "\t")
+        (display (round (sqrt m)))
+        (display "\t")
+        (display (round (expt m (/ 1 3))))
+        (newline)
+        (todas n (- m 1))        
+     )
+     (begin
+        (display m)        
+        (display "\t")
+        (display (expt m 2))
+        (display "\t")
+        (display (expt m 3))
+        (display "\t")
+        (display (sqrt m))
+        (display "\t")
+        (display (expt m (/ 1 3)))
+     )
+  )
+)
+
+;llamado
+(display "ingrese un numero ")
+(define n (read))
+(display "ingrese el segundo numero ")
+(define m (read))
+(todas n m)

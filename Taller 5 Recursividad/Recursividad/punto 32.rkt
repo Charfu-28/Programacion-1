@@ -1,0 +1,26 @@
+;32 A1 = 0, A2 = 1, ..............., An = 3 * An-1 + 2 * An-2 ( para n >= 3)
+;Escribir un programa que permita calcular el término n.
+(define (a1 n)
+  0)
+(define (a2 n)
+  1)
+(define (An n)
+  (if(> n 0)
+     (if (= n 1)
+         (a1 1)
+         (if (= n 2)
+             (a2 1)
+             (if (>= n 3)
+                 (+ (* (An (- n 1)) 3)(* 2(An (- n 2))))
+                 ("\nsolo para numeros enteros positivos \n")
+             )
+         )
+     )
+     (display "solo es para numeros mayores a 0")
+    )
+)
+
+;llamado
+(display "ingrese el valor de n ")
+(An (read))
+      

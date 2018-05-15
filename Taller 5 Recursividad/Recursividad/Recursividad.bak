@@ -1,0 +1,39 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-advanced-reader.ss" "lang")((modname Recursividad) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #t #t none #f () #f)))
+;Esta funcion muestra en pantalla la
+;tabla de multiplicar de un numero de 1 hasta j)
+;donde:
+;n--->es el numero al que se le calcula la tabla de multiplicar
+;i--> es el limite inferior
+;j---> es el limite superior
+
+
+(define (tabla  n i j)
+ (if (<= i j)
+     (begin
+       (display n)
+       (display"*")
+       (display i)
+       (display "=")
+       (display (* n i))
+       (newline)
+       (tabla n (+ i 1) j)
+       )
+     (display "fin")
+)
+  )
+
+;llamado
+;(tabla 5 1 20)
+(display"Ingrese el numero de la tabla a multiplicar:")
+(newline)
+(define tab (read))
+(display"Iniciar tabla desde el numero:")
+(newline)
+(define tabla2(read))
+(display"Terminar tabla en el numero:")
+(newline)
+(define tabla3(read))
+(tabla tab tabla2 tabla3)     
+                

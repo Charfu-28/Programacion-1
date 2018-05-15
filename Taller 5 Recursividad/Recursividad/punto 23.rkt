@@ -1,0 +1,65 @@
+;23 Dada una fecha calcular el número de dias que han transcurrido
+;desde el 1 de enero de 2000. La fecha tiene 3 parámetros: dia, mes y año.
+;Si la fecha es anterior debe mostrar un mensaje de error. Resolverlo de forma recursiva.
+;Tenga en cuenta que si el año es divisible por 4 es bisiesto.
+(define (diastotal d m a acu)
+  (if(= a 2000)
+     (begin
+       (display "Han transcurrido: ")
+       (display (+(*(- a 2000)365)(biciesto a m -1)d))
+       (display " dias.")
+     )
+     (if(= a 2001)
+        (begin
+          (display "Han transcurrido: ")
+          (display (+(*(- a 2000)365)(biciesto a m 0)d))
+          (display " dias.")
+         )
+        (if(and(< m 2)(= (modulo a 4)0))
+           (begin
+             (display "Han transcurrido: ")
+             (display (+(*(- a 2001)365)(biciesto a m -2)d))
+             (display " dias.")
+             )
+           (begin
+             (display "Han transcurrido: ")
+             (display (+(*(- a 2001)365)(biciesto a m 0)d))
+             (display " dias.")
+           )
+         )
+      )
+   )
+)
+(define (biciesto a m contador)
+  (if (>= a 2000)
+      (if(= (modulo a 4) 0)
+         (biciesto (- a 1) m(+ contador 1))
+         (biciesto (- a 1) m contador)
+      )
+      (+ contador (dias (- m 1) 0))
+  )
+)
+
+(define (dias m n)
+  (if(= m 0)
+     n
+     (if(> m 0)
+        (if (or(= m 4)(= m 6)(= m 9)(= m 11))
+            (dias (- m 1)(+ n 30))
+            (if(= m 2)
+               (dias (- m 1)(+ n 28))
+               (dias (- m 1)(+ n 31))
+            )
+        )
+     )
+  )
+)
+
+;llamdo
+(display "ingrese el dia ")
+(define d (read))
+(display "ingrese el mes ")
+(define m (read))
+(display "ingrese el año ")
+(define a (read))
+(diastotal d m a 0)
